@@ -19,22 +19,23 @@ Mỗi tin nhắn mà Consumer gửi đến một partition Kafka đều có mộ
 
 ### Khái niệm: message key
 
-- Nếu muốn các message liên quan với nhau được gửi vào cùng partition và order theo thứ tự, cần define key cho mỗi message.
+Nếu muốn các message liên quan với nhau được gửi vào cùng partition và order theo thứ tự, cần define key cho mỗi message.
 
-- - Key có thể là bất kì loại dữ liệu nào: string, number...
-- - Nếu key = null, message được gửi đến broker/partition theo cơ chế round-robin.
-- - Nếu key != null, tất cả các message có cùng key sẽ đi vào cùng broker/partition.
+- Key có thể là bất kì loại dữ liệu nào: string, number...
+- Nếu key = null, message được gửi đến broker/partition theo cơ chế round-robin.
+- Nếu key != null, tất cả các message có cùng key sẽ đi vào cùng broker/partition.
 
-- Có thể coi key là mốc phân luồng của message. Nếu không có mốc này, message sẽ bị điều hướng đến bất kì đâu. Ngược lại, mốc này sẽ kiểm tra và tìm đúng luồng cho message.
+Có thể coi key là mốc phân luồng của message. Nếu không có mốc này, message sẽ bị điều hướng đến bất kì đâu. Ngược lại, mốc này sẽ kiểm tra và tìm đúng luồng cho message.
 
 ### Khái niệm: partition
 
-- Topic được chia thành một hoặc nhiều partition và message được lưu trên đó. Khi tạo topic cần xác định số lượng partition mong muốn. Partition được order và bắt đầu từ 0.
+Topic được chia thành một hoặc nhiều partition và message được lưu trên đó. Khi tạo topic cần xác định số lượng partition mong muốn. Partition được order và bắt đầu từ 0.
 
-- Số lượng message của mỗi partition là độc lập, không phụ thuộc vào nhau. Như vậy, một message trong Kafka được xác định bởi 3 yếu tố:
-- - Topic name.
-- - Partition.
-- - Offset.
+Số lượng message của mỗi partition là độc lập, không phụ thuộc vào nhau. Như vậy, một message trong Kafka được xác định bởi 3 yếu tố:
+
+- Topic name.
+- Partition.
+- Offset.
 
 ### Khái niệm: consumer group
 
