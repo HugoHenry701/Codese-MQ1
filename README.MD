@@ -4,6 +4,10 @@
 
 ## BTVN Số 2
 
+### Khái niệm:
+
+Một cluster chứa nhiều broker, một broker chứa nhiều topic, một topic chứa nhiều partition. Partition chứa message và quản lý message
+
 ### Khái niệm: offset
 
 Các message được lưu trong partition cũng được order theo thứ tự từ cũ đến mới, append liên tục bắt đầu từ giá trị 0, được gọi là offset.
@@ -27,6 +31,8 @@ Nếu muốn các message liên quan với nhau được gửi vào cùng partit
 
 Có thể coi key là mốc phân luồng của message. Nếu không có mốc này, message sẽ bị điều hướng đến bất kì đâu. Ngược lại, mốc này sẽ kiểm tra và tìm đúng luồng cho message.
 
+|Các message có cùng message key thì vào cùng một partition.
+
 ### Khái niệm: partition
 
 Topic được chia thành một hoặc nhiều partition và message được lưu trên đó. Khi tạo topic cần xác định số lượng partition mong muốn. Partition được order và bắt đầu từ 0.
@@ -45,3 +51,20 @@ Nếu số lượng producer tăng lên và đồng thời gửi message đến 
 Như vậy, consumer group đọc toàn bộ data của các partition và chia vào các consumer bên trong để xử lý.
 
 Mỗi consumer thuộc consumer group sẽ đọc toàn bộ data của một hoặc nhiều partition để đảm bảo message ordering. Không tồn tại nhiều consumer cùng đọc message từ một partition.
+
+## Buổi 3
+
+### Message Queue là gì ?
+
+### Khi nào thì sử MQ ?
+
+- đảm bảo thứ tự của dữ liệu
+- đảm bảo giảm tải hệ thống
+- đảm bảo không bị quá tải các service
+- Giao tiếp giữa các service trong kiến trúc Microservice
+- MQ giúp hệ thống chịu tải tốt hơn
+
+### Kafka là gì
+
+- Là một service bao gồm Queue và cơ chế quản lý Message Offset.
+-
