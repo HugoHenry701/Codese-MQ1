@@ -1,10 +1,10 @@
 import { stockList } from '../stock-socket-server/stocks';
 import { codesePool, query } from '../src/configs/database.config';
 
-const createTable = () => {
+const createTable = async () => {
   console.log('Starting create tables...');
   for (var obj of stockList) {
-    const sql = `CREATE TABLE marketDb.${obj.Code} (
+    const sql = `CREATE TABLE if not exists marketDb.${obj.Code} (
     code VARCHAR(45) NOT NULL,
     exchange VARCHAR(45) NULL,
     tradingDate VARCHAR(45) NULL,
@@ -25,7 +25,7 @@ const createTable = () => {
     refPrice INT NULL,
     PRIMARY KEY (code))`;
 
-    query(codesePool, sql);
+    await query(codesePool, sql);
   }
   console.log('DONE');
 };
