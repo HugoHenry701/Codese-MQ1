@@ -1,10 +1,13 @@
 import { stockList } from '../stock-socket-server/stocks';
 import { codesePool, query } from '../src/configs/database.config';
+import moment from 'moment';
 
 const createTable = async () => {
   console.log('Starting create tables...');
+  const startProcess = moment();
   for (var obj of stockList) {
     const sql = `CREATE TABLE if not exists marketDb.${obj.Code} (
+    id INT NOT NULL AUTO_INCREMENT,
     code VARCHAR(45) NOT NULL,
     exchange VARCHAR(45) NULL,
     tradingDate VARCHAR(45) NULL,
@@ -23,11 +26,15 @@ const createTable = async () => {
     lastPrice INT NULL,
     totalVol INT NULL,
     refPrice INT NULL,
-    PRIMARY KEY (code))`;
+    PRIMARY KEY (id))`;
 
     await query(codesePool, sql);
   }
   console.log('DONE');
+  const endProcess = moment();
+  console.info(
+    `process_time: ${endProcess.diff(startProcess, 'milliseconds')}ms`
+  );
 };
 
 createTable();
