@@ -10,7 +10,7 @@
     "start:server": "node build/stock-socket-server/index.js",
     "start:producer": "node build/src/producers/index.js",
     "start:consumer": "node build/src/consumers/index.js",
-    "seed": "npx ts-node tools/createTable.ts"
+    "seed": "node build/tools/createTable.js"
   },
   "author": "",
   "license": "ISC",
