@@ -9,7 +9,8 @@
     "build": "npm run clean && tsc",
     "start:server": "node build/stock-socket-server/index.js",
     "start:producer": "node build/src/producers/index.js",
-    "start:consumer": "node build/src/consumers/index.js"
+    "start:consumer": "node build/src/consumers/index.js",
+    "seed": "npx ts-node tools/createTable.ts"
   },
   "author": "",
   "license": "ISC",

@@ -10,6 +10,7 @@ router.get('/api/chart_data', async (req: Request, res: Response) => {
     response_status: 1,
     message: `Get ${code} chart data successful.`,
     data: {
+      total: result.length,
       result,
     },
   });
