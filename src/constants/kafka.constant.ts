@@ -1,3 +1,4 @@
 export const KAFKA_TOPIC = {
-    CODESE: 'codese'
-}
+  CODESE: 'codese',
+  RETRY_CODESES: 'retry-codese',
+};

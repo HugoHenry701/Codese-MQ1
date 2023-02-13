@@ -62,6 +62,7 @@ setInterval(() => {
     lastPrice: 0,
     totalVol: 0,
     refPrice: 0,
+    unixTime: moment().unix(),
   };
 
   lastPrice = data[`${buyOrSell ? 'askPrice' : 'bidPrice'}${matchValue}`];

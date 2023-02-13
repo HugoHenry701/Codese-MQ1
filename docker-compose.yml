@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   redpanda:
     image: vectorized/redpanda:latest
@@ -17,7 +17,7 @@ services:
       - 9092:9092
       - 28082:28082
       - 29092:29092
-  console: 
+  console:
     image: vectorized/console:latest
     entrypoint: /bin/sh
     command: -c "echo \"$$CONSOLE_CONFIG_FILE\" > /tmp/config.yml; /app/console"
@@ -40,9 +40,14 @@ services:
       - MYSQL_DATABASE=marketDb
       - MYSQL_ROOT_PASSWORD=password
     ports:
-      - "3310:3306"
+      - '3310:3306'
     volumes:
       - db:/var/lib/mysql
+  redis:
+    container_name: redis
+    image: redis:6.0.10-alpine
+    ports:
+      - '6379:6379'
 volumes:
   db:
     driver: local
